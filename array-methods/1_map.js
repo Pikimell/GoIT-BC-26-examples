@@ -6,3 +6,11 @@
  - Повертає новий масив однакової довжини.
 
 */
+
+// let array = [2, 6, 1, 5, 8, 2, 1];
+
+// let newArray = array.map((element, index) => {
+//   return `${index} - ${element}`;
+// });
+
+// console.log(newArray);

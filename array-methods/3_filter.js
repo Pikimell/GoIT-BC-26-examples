@@ -9,3 +9,11 @@
  - Якщо жоден елемент не задовольнив умову, повертає порожній масив.
 
 */
+
+// let array = [1, 3, 56, 1, 5, 78, 2, 6];
+
+// let result = array.filter((element) => {
+//   return element < 50;
+// });
+
+// console.log(array);

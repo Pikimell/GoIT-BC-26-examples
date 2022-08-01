@@ -6,3 +6,29 @@
  - Якщо жоден елемент не задовольняє умову, тобто для всіх елементів колбек повернув false, метод повертає -1.
 
 */
+
+// let array = [
+//   {
+//     name: "123",
+//     age: 12,
+//     phone: "+28099448",
+//   },
+//   {
+//     name: "123",
+//     age: 20,
+//     phone: "+28099854185",
+//   },
+//   {
+//     name: "123",
+//     age: 31,
+//     phone: "+280996161",
+//   },
+// ];
+
+// let str = ["Roman", "Anatoliy", "Anatoliy", "Anatoliy", "Anatoliy"];
+
+// let result = str.findIndex((element) => {
+//   return element[0] === "A";
+// });
+
+// console.log(str);

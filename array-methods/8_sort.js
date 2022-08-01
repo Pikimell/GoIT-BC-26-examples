@@ -6,3 +6,25 @@
  - Сортування відбувається шляхом приведення значень до рядка і порівняння порядкових номерів у таблиці Unicode.
  
 */
+
+// let array = [100, 23, 35, 66, 12];
+// let scores = [27, 2, 41, 4, 7, 3, 75];
+
+// scores.sort((a, b) => {
+//   return a - b;
+// });
+
+// for (let i = 0; i < array.length; i++) {
+//   for (let j = 0; j < array.length; j++) {
+//     let a = array[i];
+//     let b = array[j];
+
+//     if () {
+//       // b - a < 0;  10-11 = -1
+//       array[j] = a;
+//       array[i] = b;
+//     }
+//   }
+// }
+
+// console.log(scores);
