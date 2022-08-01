@@ -1,0 +1,9 @@
+// https://www.codewars.com/kata/58e0cb3634a3027180000040
+// https://www.codewars.com/kata/59eb28fb0a2bffafbb0000d6
+// https://www.codewars.com/kata/52ab60b122e82a6375000bad
+// https://www.codewars.com/kata/56a1c074f87bc2201200002e
+// https://www.codewars.com/kata/582ba36cc1901399a70005fc
+// https://www.codewars.com/kata/coding-meetup-number-1-higher-order-functions-series-count-the-number-of-javascript-developers-coming-from-europe
+// https://www.codewars.com/kata/coding-meetup-number-2-higher-order-functions-series-greet-developers
+// https://www.codewars.com/kata/coding-meetup-number-3-higher-order-functions-series-is-ruby-coming
+// https://www.codewars.com/kata/coding-meetup-number-4-higher-order-functions-series-find-the-first-python-developer
