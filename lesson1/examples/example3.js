@@ -8,8 +8,8 @@ const phonebook = {
     const newContact = {
       list: "default",
       ...contact,
-      id: generateId(),
-      createdAt: getDate(),
+      id: this.generateId(),
+      date: this.getDate(),
     };
     contacts.push(newContact);
   },
@@ -21,16 +21,27 @@ const phonebook = {
   },
 };
 
-console.log(
-  phonebook.add({
-    name: "Mango",
-    email: "mango@mail.com",
-    list: "friends",
-  })
-);
-console.log(
-  phonebook.add({
-    name: "Poly",
-    email: "poly@hotmail.com",
-  })
-);
+phonebook.add({
+  name: "Mango",
+  email: "mango@mail.com",
+  list: "friends",
+});
+
+phonebook.add({
+  name: "Poly",
+  email: "poly@hotmail.com",
+});
+
+console.log(phonebook.contacts);
+
+let obj1 = {
+  name: "123",
+  age: 112,
+};
+
+let obj2 = {
+  name: "default",
+  ...obj1,
+};
+
+console.log(obj2);

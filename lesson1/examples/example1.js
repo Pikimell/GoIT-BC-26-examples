@@ -9,7 +9,13 @@ const chopShop = {
     { name: "Sapphire", price: 1400, quantity: 7 },
     { name: "Ruby", price: 800, quantity: 2 },
   ],
-  calcTotalPrice(stoneName) {},
+  calcTotalPrice(stoneName) {
+    let { price, quantity } = this.stones.find(
+      (element) => element.name === stoneName
+    );
+
+    return price * quantity;
+  },
 };
 
 console.log(chopShop.calcTotalPrice("Emerald")); // 5200
