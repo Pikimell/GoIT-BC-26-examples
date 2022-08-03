@@ -3,8 +3,11 @@ let elem = {
 };
 
 function func(a, b) {
-  console.log(this.value);
-  return a + b;
+  const arrow = (a, b) => {
+    console.log(this);
+  };
+
+  arrow();
 }
 
 func.call(elem);

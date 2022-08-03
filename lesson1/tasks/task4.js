@@ -1,19 +1,20 @@
-let f = function () {
-  let obj = {
-    x: 120,
-    foo() {
-      this.x = 5;
+function f() {
+  const foo = () => {
+    this.x = 5;
 
-      //this -> window, тому що самовикликається
-      (function () {
-        this.x = 3;
-      })();
+    (function () {
+      this.x = 3;
+    })();
 
-      console.log(this.x); //5
-    },
+    console.log(this);
   };
 
-  obj.foo();
+  return foo;
+}
+
+let obj1 = {
+  name: 123,
+  foo1: f(),
 };
 
-f();
+obj1.foo1();

@@ -9,31 +9,27 @@
   console.log(this.x);
 }; */
 
-/* let obj = {
+let obj = {
   x: 4,
   y: 4,
   m: () => {
-    console.log(this, "посилається на Window, тому що стрілочна функція");
+    console.log(this);
   },
 
   newFunc() {
-    console.log(this, "this - посилається на (обьект) який викликає цей метод");
+    console.log(this);
 
     const arrow = () => {
-      console.log(
-        this,
-        "посилається на контекст батька(newFunc), тому що стрілочна функція"
-      );
+      console.log(this);
     };
 
-    arrow();
+    return arrow;
   },
 };
 
-let newFunc = obj.newFunc;
+const foo = obj.newFunc;
 
-
-newFunc(); */
+foo();
 
 //obj.newFunc.call(window);
 

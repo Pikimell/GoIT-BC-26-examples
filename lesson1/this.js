@@ -26,27 +26,31 @@
 */
 // "use strict";
 
-// function fun() {
-//   console.log(this);
-//   return this;
-// }
+function fun() {
+  console.log(this);
+  return this;
+}
 
-// let obj1 = {
-//   fun1: fun,
-//   fun2() {
-//     console.log(this);
-//   },
-// };
+let obj1 = {
+  fun1: fun,
+  fun2() {
+    console.log(this);
+  },
+  fun3: () => {
+    console.log(this);
+  },
+};
 
-// obj1.fun1();
-// obj1.fun2();
+obj1.fun1();
+obj1.fun2();
+obj1.fun3();
 
-// let obj = {
-//   name: "123",
-//   foo() {
-//     console.log(this);
-//   },
-// };
+let obj = {
+  name: "123",
+  foo() {
+    console.log(this);
+  },
+};
 
 // let obj1 = {
 //   foo: obj.foo
@@ -113,7 +117,7 @@
     - Метод bind()
 */
 
-let obj1 = {
+/* let obj1 = {
   foo(a, b) {
     console.log(arguments);
   },
@@ -138,7 +142,7 @@ const foo = () => {
   console.log(this);
 };
 
-foo.call(obj3);
+foo.call(obj3); */
 // const func = ;
 // func(10, 20, 31, 32);
 // func(11, 12, 31, 32);
