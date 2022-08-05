@@ -1,3 +1,4 @@
+let myBtn = document.querySelector("#testButton");
 /* 
 
 elem.parentNode - вибере батьківський elem.
