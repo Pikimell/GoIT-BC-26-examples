@@ -1,0 +1,19 @@
+.blue{
+    color:blue;
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.point:hover{
+    cursor: pointer;
+}

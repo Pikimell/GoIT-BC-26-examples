@@ -1,5 +1,8 @@
 let myBtn = document.querySelector("#testButton");
 
+const callback = () => {};
+
+myBtn.addEventListener("click", callback);
 /* 
 У властивості classList зберігається об'єкт з методами для роботи з класами елемента.
 
@@ -8,4 +11,13 @@ elem.classList.add(cls) - додає клас cls до списку класів
 elem.classList.remove(cls) - видаляє клас cls зі списку класів елемента.
 elem.classList.toggle(cls) - якщо відсутній клас cls, то додає його, якщо - присутній, навпаки - видаляє.
 elem.classList.replace(oldClass, newClass) - замінює існуючий клас oldClass на вказаний newClass.
+*/
+
+/* 
+Властивість style
+
+myBtn.addEventListener("click", () => {
+  myBtn.style.width = "10vh";
+  console.log(myBtn.style.width);
+});
 */

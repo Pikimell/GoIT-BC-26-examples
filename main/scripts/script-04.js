@@ -1,4 +1,10 @@
 let myBtn = document.querySelector("#testButton");
+const callback = () => {
+  let elems = document.querySelector("ul");
+  console.log(elems.firstElementChild);
+};
+
+myBtn.addEventListener("click", callback);
 /* 
 
 elem.parentNode - вибере батьківський elem.
