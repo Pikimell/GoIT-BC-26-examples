@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Form Event</h2>
+    <hr>
+
+    <form class="js-form" autocomplete="off">
+        <div role="group">
+            <label>
+                Email
+                <input  type="email" name="email">
+            </label>
+            <label>
+                Password
+                <input  type="password" name="password">
+            </label>
+        </div>
+        <br>
+        <div role="group">
+            <b>Type subscribe</b>
+            <label>
+                <input type="radio" name="subscription" value="free">
+                Free
+                <input type="radio" name="subscription" value="basic">
+                Basic
+                <input type="radio" name="subscription" value="pro">
+                Pro
+            </label>
+        </div>
+        <br>
+        <button type="submit">Registration</button>
+
+    </form>
+
+    <hr>
+    <input type="button" value="<-Back" onclick="history.back()"> <input type="button" value="Test" id="testButton">
+    <script src="scripts/script-02.js" ></script>
+</body>
+</html>

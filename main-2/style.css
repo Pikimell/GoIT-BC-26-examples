@@ -1,0 +1,37 @@
+.blue{
+    color:blue;
+}
+.tomato{
+    color:tomato
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.point:hover{
+    cursor: pointer;
+}
+
+.wrong{
+    background-color: rgb(109, 109, 109);
+}
+
+.collection-item , .collection-item *{
+    border: 1px solid;
+    border-collapse: collapse;
+    width: 80vw;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+
