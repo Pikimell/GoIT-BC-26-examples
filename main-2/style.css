@@ -64,7 +64,13 @@ body.show-modal .backdrop{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5%;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 10px;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .box-500{

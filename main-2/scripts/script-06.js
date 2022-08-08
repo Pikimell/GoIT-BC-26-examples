@@ -22,3 +22,11 @@ closeBtn.addEventListener("click", onModalClose);
 backdropElem.addEventListener("click", (event) => {
   if (event.target === event.currentTarget) onModalClose();
 });
+
+document.addEventListener("keypress", (event) => {
+  event.preventDefault();
+  if (event.ctrlKey && event.code === "KeyQ") {
+    document.body.classList.add("show-modal");
+    document.body.addEventListener("keyup", onBodyKeyUp);
+  }
+});
