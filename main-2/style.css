@@ -1,8 +1,80 @@
+body.show-modal .backdrop{
+ opacity: 1;
+ visibility: visible;
+ pointer-events: initial;
+}
+
+.backdrop{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+    
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.modal{
+    padding:24px;
+    border-radius: 10%;
+    max-width: 640px;
+    min-height: 100px;
+    background-color: white;
+    border-radius:10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+
+
+
+
+
+
+
+
+
+
 .blue{
+    background-color: blue;
     color:blue;
 }
 .tomato{
+    background-color: tomato;
     color:tomato
+}
+.grey{
+    background-color: grey;
+    color:grey
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5%;
+}
+
+.box-500{
+    width: 200px;
+    height: 200px; 
+}
+
+.box-100{
+    width: 50px;
+    height: 50px;
 }
 
 .upper{

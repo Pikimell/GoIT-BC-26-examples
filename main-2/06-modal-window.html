@@ -10,12 +10,22 @@
 <body>
     
     <h2>Modal Window</h2>
-    <hr>
 
-    
-
-    <hr>
-    <input type="button" value="<-Back" onclick="history.back()"> <input type="button" value="Test" id="testButton">
+    <div class="backdrop js-backdrop">
+        <div class="modal">
+            <h2>Modal Window</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima facere nemo, perspiciatis ad accusantium libero molestias enim esse facilis sed ab ut quia! Velit id incidunt fugiat error, eaque veniam!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius nesciunt corrupti nemo nulla accusamus consequuntur fuga omnis dicta quo culpa quis, saepe hic, incidunt minima ut reiciendis sequi, unde voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam beatae nulla, pariatur veritatis sed illum tempora, aperiam suscipit reprehenderit ullam omnis quae facilis delectus. Eveniet consectetur omnis porro perferendis voluptatum.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi repudiandae minima quod, debitis nesciunt perspiciatis. Iusto magni architecto aut voluptatum adipisci omnis optio in ratione repellat laborum! Dolor, recusandae repellat.
+            </p>
+            <input type="button" value="Close" id="closeModalBtn">
+        </div>
+    </div>
+    <input type="button" value="<-Back" onclick="history.back()">
+    <input type="button" value="Open Modal Window" id="openModalBtn">
     <script src="scripts/script-06.js" ></script>
 </body>
 </html>
