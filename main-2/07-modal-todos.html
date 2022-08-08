@@ -7,48 +7,47 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="show-modal">
+<body>
     
     <h2>Todos</h2>
-
+    <input type="button" value="Previous" id="previousBtn">
+    <input type="button" value="Next" id="nextBtn">
+    <input type="button" value="Load Data" onclick="loadData(0)">
     <div class="js-list box">
-        <div class="box">
-            <h2 class="js-title">Modal Window</h2>
-            <p class="js-body">
-                ...
-            </p>
-        </div>
-        <div class="box">
-            <h2 class="js-title">Modal Window</h2>
-            <p class="js-body">
-                ...
-            </p>
-        </div>
-        <div class="box">
-            <h2 class="js-title">Modal Window</h2>
-            <p class="js-body">
-                ...
-            </p>
-        </div>
+        
     </div>
-    
 
     <div class="backdrop js-backdrop">
-        <div class="modal">
+        <div class="modal js-modal-1">
             <label>
                 Search id:
-                <input type="number" name="findId" min="0">
-                <input type="button" value="search">
+                <input type="number" name="findId" min="1" class="js-search-input" value="1">
+                <input type="button" value="search" onclick="search(event)">
             </label>
             <br>
             <br>
             <input type="button" value="Close" id="closeModalBtn">
         </div>
+        <div class="modal js-modal-2">
+            <h3>Create TODO:</h3>
+            <label>
+                Title:  <input type="text" name="title-todo" class="js-title-todo">
+            </label>  
+            <br> <br>
+            <label>
+                Body:
+                <input type="text" name="body-todo" class="js-body-todo">
+            </label><br><br>
+            <input type="checkbox" value="Create" class="js-checkbox">
+            <input type="button" value="Create" class="js-create-todo-btn" disabled>
+
+            
+            <input type="button" value="Close" id="closeModalBtnFirst">
+        </div>
     </div>
+
     <input type="button" value="<-Back" onclick="history.back()">
-    <!-- <input type="button" value="Open Modal Window" id="openModalBtn"> -->
-    <input type="button" value="Previous" id="previousBtn">
-    <input type="button" value="Next" id="nextBtn">
-    <script src="scripts/script-07.js" ></script>
+    <input type="button" value="Open Modal Window" id="openToDo" onclick="fooTodu()">
+    <script src="scripts/07-modal-todos.js" ></script>
 </body>
 </html>

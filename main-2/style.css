@@ -35,6 +35,13 @@ body.show-modal .backdrop{
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding-box;
     background-clip: padding-box;
+    visibility: hidden;
+    display: none;
+}
+
+.visibility{
+    visibility: visible; 
+    display: block;
 }
 
 
