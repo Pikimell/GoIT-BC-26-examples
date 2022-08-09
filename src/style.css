@@ -17,7 +17,7 @@
     -moz-background-clip: padding-box;
     background-clip: padding-box;
 
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 .delegation-btn{
