@@ -34,44 +34,11 @@ function hexToRgb(hex) {
 createPaletteItems();
 
 ////////////////////////////////////////////////////////////////////////////
-const refs = {
-  colorBoxElem: document.querySelector(".js-colors-box"),
-  modalElem: document.querySelector(".modal"),
-};
-
-function loadColorPallet() {
-  refs.colorBoxElem.innerHTML = "";
-  for (color of colorPalette) {
-    let elem = `
-<li class="color-item">
-    <button class="color-body" style="background-color:${color.hex}";></button>
-    <div class="color-footer">
-        <div>HEX: ....</div>
-        <div>RGB: ....</div>
-        <div></div>
-    </div>
-</li>
-    `;
-    refs.colorBoxElem.innerHTML += elem;
-  }
-}
-
-refs.colorBoxElem.addEventListener("click", (event) => {
-  if (event.target.nodeName === "BUTTON") {
-    let = document.body.classList.add("show-modal");
-    refs.modalElem.style.backgroundColor = event.target.style.backgroundColor;
-  }
-});
-
-document.addEventListener("keydown", () => {
-  document.body.classList.remove("show-modal");
-});
-loadColorPallet();
 
 ////////////////////////////////////////////////////////////////////////////
 
 /* 
-
+nodeName
 <li class="color-item">
     <button class="color-body style="background-color:...;"></button>
     <div class="color-footer">
