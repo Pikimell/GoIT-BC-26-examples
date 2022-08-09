@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="user-style.css">
+</head>
+<body>
+    <div class="backdrop js-backdrop">
+        <div class="modal visible js-user-info">
+
+        </div>
+
+        <div class="modal js-form-regestration">
+            <form>
+                <h1>USER Form</h1>
+                <label>
+                    Login:___
+                    <input type="text" name="login" required>
+                </label><br>
+                <label>
+                    Password:
+                    <input type="password" name="password" required>
+                </label><br>
+
+                <label>
+                    Name:___
+                    <input type="text" name="name" required>
+                </label><br>
+                <label>
+                    Email:___
+                    <input type="email" name="email" required>
+                </label><br>
+                <h3>Address</h3>
+                <label>
+                    City:
+                    <input type="text" name="city" required>
+                </label>
+                <label>
+                    Street:
+                    <input type="text" name="street" required>
+                </label><br><br>
+
+            
+                <input type="submit" value="Regestration">
+            </form>
+        </div>
+    </div>
+
+
+    <ul class="box list-user js-list-user">
+        
+    </ul>
+    
+
+    <script src="scripts/05-users-example.js"></script>
+</body>
+</html>

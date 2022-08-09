@@ -31,13 +31,17 @@ function hexToRgb(hex) {
   let blue = parseInt(hex.substring(5, 7), 16);
   return `${red}, ${green}, ${blue}`;
 }
+
 createPaletteItems();
 ////////////////////////////////////////////////////////////////////////////
 let refs = {
   itemList: document.querySelector(".js-colors-box"),
+  modalElement: document.querySelector(".modal"),
+  btnReloadColor: document.querySelector(".js-reload-color"),
 };
 
 function loadColorPallet() {
+  createPaletteItems();
   const pallete = colorPalette
     .map(({ hex, rgb }) => {
       return `<li class="color-item">
@@ -51,14 +55,14 @@ function loadColorPallet() {
     })
     .join("");
 
-  refs.itemList.innerHTML = pallete + refs.itemList.innerHTML;
+  refs.itemList.innerHTML = pallete;
 }
 
 loadColorPallet();
 refs.itemList.addEventListener("click", (even) => {
   if (even.target.nodeName !== "BUTTON") return;
-  console.log(even.target);
   document.body.classList.add("show-modal");
+  refs.modalElement.style.backgroundColor = even.target.style.backgroundColor;
   function onBodyKeydown(eve) {
     if (eve.code === "Escape") {
       document.body.classList.remove("show-modal");
@@ -67,6 +71,11 @@ refs.itemList.addEventListener("click", (even) => {
   }
   document.addEventListener("keydown", onBodyKeydown);
 });
+
+refs.btnReloadColor.addEventListener("click", call);
+function call(even) {
+  loadColorPallet();
+}
 
 ////////////////////////////////////////////////////////////////////////////
 
