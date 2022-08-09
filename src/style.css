@@ -17,7 +17,7 @@
     -moz-background-clip: padding-box;
     background-clip: padding-box;
 
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .delegation-btn{
@@ -134,7 +134,6 @@ body.show-modal .backdrop{
    
 .modal{
     padding:24px;
-    border-radius: 10%;
     width: 60vw;
     height: 60vh;
     border-radius:10px;

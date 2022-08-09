@@ -1,7 +1,7 @@
 let colorPalette = [];
+const LENGTH = 5;
 function createPaletteItems() {
   const items = [];
-  const LENGTH = 20;
   for (let i = 0; i < LENGTH; i++) {
     let hex = getRangomColor();
     let color = {
@@ -32,8 +32,41 @@ function hexToRgb(hex) {
   return `${red}, ${green}, ${blue}`;
 }
 createPaletteItems();
-
 ////////////////////////////////////////////////////////////////////////////
+let refs = {
+  itemList: document.querySelector(".js-colors-box"),
+};
+
+function loadColorPallet() {
+  const pallete = colorPalette
+    .map(({ hex, rgb }) => {
+      return `<li class="color-item">
+  <button class="color-body" style="background-color:${hex}";></button>
+  <div class="color-footer">
+      <div>HEX: ${hex}</div>
+      <div>RGB: ${rgb}</div>
+      <div></div>
+  </div>
+</li>`;
+    })
+    .join("");
+
+  refs.itemList.innerHTML = pallete + refs.itemList.innerHTML;
+}
+
+loadColorPallet();
+refs.itemList.addEventListener("click", (even) => {
+  if (even.target.nodeName !== "BUTTON") return;
+  console.log(even.target);
+  document.body.classList.add("show-modal");
+  function onBodyKeydown(eve) {
+    if (eve.code === "Escape") {
+      document.body.classList.remove("show-modal");
+      document.removeEventListener("keydown", onBodyKeydown);
+    }
+  }
+  document.addEventListener("keydown", onBodyKeydown);
+});
 
 ////////////////////////////////////////////////////////////////////////////
 
