@@ -42,23 +42,27 @@
 }
 
 .list-user{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    min-height: 10px;
-    max-height: 300px;
-    width: 25vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height: 300px;
+  height: 300px;
+  width: 25vw;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .list-posts{
   width: 50vw;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
+
 .list-post-body{
-  min-height: 100px;
-  max-height: 300px;
+  height: 300px;
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -70,14 +74,25 @@
 }
 
 .list-post-comment{
-  min-height: 100px;
-  max-height: 300px;
+  height: 100px;
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 0;
 }
 
+.list-photo{
+  overflow-y: auto;
+  max-height: 60%;
+  justify-content: start;
+}
+
+.list-photo-item{
+  width: 300px;
+  height: 300px;
+  border-radius: 14px;
+  margin: 10px;
+}
 
 .post-item{
   height: 200px;
@@ -88,6 +103,13 @@
 .post-item p{
   max-height: 100px;
   overflow-y: auto;
+}
+
+.comment-item{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid tomato;
 }
 
 
@@ -133,7 +155,6 @@ body.show-modal .backdrop{
     background-clip: padding-box;
     cursor: pointer;
 
-    overflow-y: auto;
     display: none;
     z-index: 10;
 }

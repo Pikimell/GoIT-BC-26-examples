@@ -9,6 +9,7 @@ const refs = {
   backdrop: document.querySelector(".backdrop"),
   modalForm1: document.querySelector(".js-modal-1"),
   modalForm2: document.querySelector(".js-modal-2"),
+  commentsListEl: document.querySelector(".js-list-post-comment"),
 };
 
 // Завантажую(Відображаю на сторінці) список користувачів
@@ -38,13 +39,12 @@ function showFilteredUsers(users) {
     })
     .join(""); // Перетворення массиву на розмітку ХТМЛ
 
-  refs.userList.innerHTML = refs.userList.innerHTML + result;
+  refs.userList.innerHTML = result;
   refs.btnOpenModal = document.querySelector("#open-modal");
 }
 
 // Прослуховувач подій клік на Списку користувачів
 refs.userList.addEventListener("click", onUserClick);
-
 //Колбек для прослуховувача
 function onUserClick(event) {
   if (event.target.nodeName === "LI") {
@@ -54,7 +54,8 @@ function onUserClick(event) {
     let idUser = event.target.dataset.iduser;
 
     // Відображаем пости обраного юзера
-    updateListAlbums(idUser);
+    if (event.ctrlKey) updateListAlbums(idUser);
+    else updateListPosts(idUser);
   }
 }
 
@@ -85,9 +86,9 @@ function updateListPosts(idUser) {
   const filteredPosts = posts.filter(({ userId }) => {
     return userId === Number(idUser);
   });
-  const htmlPosts = filteredPosts.map(({ title, body }) => {
+  const htmlPosts = filteredPosts.map(({ title, body, id }) => {
     return `
-        <li class="box post-item">
+        <li class="box post-item" data-id='${id}'>
             <b>${title}</b>
             <p>${body}</p>
         </li>`;
@@ -98,28 +99,66 @@ function updateListPosts(idUser) {
 }
 
 // Додавання прослуховувача події на список постів (щоб відкривати модалку)
-refs.postList.addEventListener("click", onAlbumListClick);
+refs.postList.addEventListener("click", onListItemClick);
 
 // Колбек для прослуховувача
-function onAlbumListClick(event) {
+function onListItemClick(event) {
   // Перевірка якщо клік саме по альбому
-  if (event.target.nodeName === "LddI") {
-    // Додаю необхідні класи для відображення модалки
-    document.body.classList.add("show-modal");
-    refs.modalForm2.classList.add("visible");
-    refs.modalForm1.classList.remove("visible");
+  let myTarget = event.target;
+  if (
+    !event.target.matches(".list-post-body") &&
+    !event.target.matches(".post-item")
+  )
+    myTarget = event.target.closest(".post-item");
 
-    // Отримую данні обраного альбому
-    let albumId = event.target.dataset.id;
-    let title = event.target.children[0].textContent;
+  if (myTarget.nodeName === "LI") {
+    let albumId = myTarget.dataset.id;
 
-    // Викликаю функцію відобрадення альбому
-    loadAlbumDataToModal(title, albumId);
+    if (myTarget.children.length === 1) {
+      // Додаю необхідні класи для відображення модалки
+      document.body.classList.add("show-modal");
+      refs.modalForm2.classList.add("visible");
+      refs.modalForm1.classList.remove("visible");
+
+      // Отримую данні обраного альбому
+      let title = myTarget.children[0].textContent;
+
+      // Викликаю функцію відобрадення альбому
+      loadAlbumDataToModal(title, albumId);
+    } else {
+      showComments(albumId);
+    }
   }
 }
 
+function showComments(postId) {
+  let filteredComments = comments.filter((comment) => {
+    return comment.postId == postId;
+  });
+  refs.commentsListEl.innerHTML = filteredComments
+    .map(({ body, email }) => {
+      return `
+    <li class="comment-item">
+            <i>${email}</i>
+            <p>${body}</p>
+          </li>
+    `;
+    })
+    .join("");
+}
+
 // Фукнція відображення альбому в модальному вікні
-function loadAlbumDataToModal(title, albumId) {}
+function loadAlbumDataToModal(title, albumId) {
+  let filteredListPhoto = photos.filter((photo) => {
+    return photo.albumId == Number(albumId);
+  });
+  refs.modalForm2.children[0].textContent = title;
+  refs.modalForm2.children[1].innerHTML = filteredListPhoto
+    .map((elem) => {
+      return ` <img class='list-photo-item lazyload' src="${elem.thumbnailUrl}" data-src="${elem.url}">`;
+    })
+    .join("");
+}
 
 // Прослуховувач подій на кнопці для створення нового юзера (Відкриває модальне вікно реєстрації)
 refs.btnOpenModal.addEventListener("click", (event) => {
