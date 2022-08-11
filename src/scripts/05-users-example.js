@@ -103,7 +103,7 @@ refs.postList.addEventListener("click", onAlbumListClick);
 // Колбек для прослуховувача
 function onAlbumListClick(event) {
   // Перевірка якщо клік саме по альбому
-  if (event.target.nodeName === "LI") {
+  if (event.target.nodeName === "LddI") {
     // Додаю необхідні класи для відображення модалки
     document.body.classList.add("show-modal");
     refs.modalForm2.classList.add("visible");
