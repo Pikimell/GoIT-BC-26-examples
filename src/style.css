@@ -8,15 +8,7 @@ img{
     height: 500px;
 }
 
-
-
-body {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-  
+ 
   .form {
     background-color: #15172b;
     border-radius: 20px;
