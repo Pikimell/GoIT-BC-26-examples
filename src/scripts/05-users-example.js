@@ -175,3 +175,17 @@ refs.backdrop.addEventListener("click", (event) => {
     // закриваю модалку видаливши клас
     document.body.classList.remove("show-modal");
 });
+
+refs.commentsListEl.addEventListener("mouseover", onCommentsListMouseOver);
+refs.commentsListEl.addEventListener("mouseout", onCommentsListMouseOut);
+
+function onCommentsListMouseOver(event) {
+  console.log(refs.postList.style.height);
+  refs.postList.style.height = "100px";
+  event.currentTarget.style.height = "300px";
+}
+
+function onCommentsListMouseOut(event) {
+  refs.postList.style.height = "300px";
+  event.currentTarget.style.height = "100px";
+}
