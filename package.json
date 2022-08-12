@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Pikimell/GoIT-examples/issues"
   },
-  "homepage": "https://github.com/Pikimell/GoIT-examples#readme"
+  "homepage": "https://github.com/Pikimell/GoIT-examples#readme",
+  "type": "module"
 }

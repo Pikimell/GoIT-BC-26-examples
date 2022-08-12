@@ -1,5 +1,18 @@
 // users, posts, comments, albums, photos
 //Посилання на необхідні елементи
+import dataArray from "./05-users-data.js";
+import helpers from "./modules/helpers.js";
+import callbacks from "./modules/callbacks.js";
+
+let {
+  loadAlbumDataToModal,
+  showFilteredUsers,
+  showComments,
+  updateListAlbums,
+  print,
+} = helpers;
+let { users, photos, posts, albums, comments } = dataArray;
+
 const refs = {
   inputUserFilter: document.querySelector("#user-filter"),
   outputUserFilter: document.querySelector("#outputInput"),
@@ -13,7 +26,7 @@ const refs = {
 };
 
 // Завантажую(Відображаю на сторінці) список користувачів
-showFilteredUsers(users);
+showFilteredUsers(users, refs);
 
 //Створюю прослуховувач події на інпуті
 refs.inputUserFilter.addEventListener("input", _.debounce(onInputChange, 300));
@@ -24,23 +37,7 @@ function onInputChange(event) {
   });
 
   //Відображаємо відфільтрованний массив коритсувачів
-  showFilteredUsers(filteredUsers);
-}
-
-//Фукнція відображенння отриманого массиву коритсувачів
-function showFilteredUsers(users) {
-  let result = users
-    .map((use) => {
-      return `
-      <li class="user-card" data-idUser="${use.id}">
-       ${use.name}
-      </li>
-      `;
-    })
-    .join(""); // Перетворення массиву на розмітку ХТМЛ
-
-  refs.userList.innerHTML = result;
-  refs.btnOpenModal = document.querySelector("#open-modal");
+  showFilteredUsers(filteredUsers, refs);
 }
 
 // Прослуховувач подій клік на Списку користувачів
@@ -54,31 +51,9 @@ function onUserClick(event) {
     let idUser = event.target.dataset.iduser;
 
     // Відображаем пости обраного юзера
-    if (event.ctrlKey) updateListAlbums(idUser);
+    if (event.ctrlKey) updateListAlbums(idUser, refs);
     else updateListPosts(idUser);
   }
-}
-
-// Функція відображення Альбомів переданого юзера
-function updateListAlbums(idUser) {
-  //Фільтруємо массив постів, залишаючи лише необхідні
-  const filteredPosts = albums.filter(({ userId }) => {
-    return userId === Number(idUser);
-  });
-
-  // Генеруємо массив з розміткою альбомів (елемент)
-  const htmlPosts = filteredPosts.map(({ id, title }) => {
-    return `
-        <li class="box post-item" data-id="${id}">
-            <b>${title}</b>
-        </li>`;
-  });
-
-  // Отримуємо розмітку у вигляді цільного рядка
-  let result = htmlPosts.join("");
-
-  // Відображаємо цю розмітку на сторінці
-  refs.postList.innerHTML = result;
 }
 
 // Функція відображення Постів переданого юзера (Все як і в верхній функції)
@@ -124,49 +99,17 @@ function onListItemClick(event) {
       let title = myTarget.children[0].textContent;
 
       // Викликаю функцію відобрадення альбому
-      loadAlbumDataToModal(title, albumId);
+      loadAlbumDataToModal(title, albumId, refs);
     } else {
-      showComments(albumId);
+      showComments(albumId, refs);
     }
   }
 }
 
-function showComments(postId) {
-  let filteredComments = comments.filter((comment) => {
-    return comment.postId == postId;
-  });
-  refs.commentsListEl.innerHTML = filteredComments
-    .map(({ body, email }) => {
-      return `
-    <li class="comment-item">
-            <i>${email}</i>
-            <p>${body}</p>
-          </li>
-    `;
-    })
-    .join("");
-}
-
 // Фукнція відображення альбому в модальному вікні
-function loadAlbumDataToModal(title, albumId) {
-  let filteredListPhoto = photos.filter((photo) => {
-    return photo.albumId == Number(albumId);
-  });
-  refs.modalForm2.children[0].textContent = title;
-  refs.modalForm2.children[1].innerHTML = filteredListPhoto
-    .map((elem) => {
-      return ` <img class='list-photo-item lazyload' src="${elem.thumbnailUrl}" data-src="${elem.url}">`;
-    })
-    .join("");
-}
 
 // Прослуховувач подій на кнопці для створення нового юзера (Відкриває модальне вікно реєстрації)
-refs.btnOpenModal.addEventListener("click", (event) => {
-  event.stopPropagation(); //Зупиняє всплиття події на верх (до батька не дійде)
-  document.body.classList.add("show-modal");
-  refs.modalForm1.classList.add("visible");
-  refs.modalForm2.classList.remove("visible");
-});
+refs.btnOpenModal.addEventListener("click", callbacks.openModal);
 
 // Прослуховувач подій на бекдроп для закриття модалок
 refs.backdrop.addEventListener("click", (event) => {
