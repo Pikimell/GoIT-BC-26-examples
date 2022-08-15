@@ -1,23 +1,24 @@
-import '../css/common.css';
-
 /*
  * Метод setInterval(callback, delay, args)
  */
 
-const logger = time => console.log(`Лог каждые ${time}ms - ${Date.now()}`);
+const logger = (time) => console.log(`Лог каждые ${time}ms - ${Date.now()}`);
 
-// console.log('До вызова setInterval');
-// setInterval(logger, 2000, 2000);
-// console.log('После вызова setInterval');
+let i = 0;
+let idInterval = setInterval(() => {
+  console.log("Inter1");
+}, 1000);
+let idInterval2 = setInterval(() => {
+  console.log("Inter2");
+}, 1000);
+let idInterval3 = setInterval(() => {
+  console.log("Inter3");
+}, 1000);
+
+let idInterval4 = setInterval(() => {
+  console.log("Inter4");
+}, 0);
 
 /*
  * Очистка интервала с clearInterval(intervalId)
  */
-
-// const intervalId = setInterval(logger, 2000, 2000);
-// const shouldCancelInterval = Math.random() > 0.3;
-// console.log(shouldCancelInterval);
-
-// if (shouldCancelInterval) {
-//   clearInterval(intervalId);
-// }

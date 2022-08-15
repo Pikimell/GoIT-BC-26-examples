@@ -1,9 +1,9 @@
-import '../css/common.css';
+import "../css/common.css";
 
 const refs = {
-  startBtn: document.querySelector('button[data-action-start]'),
-  stopBtn: document.querySelector('button[data-action-stop]'),
-  clockface: document.querySelector('.js-clockface'),
+  startBtn: document.querySelector("button[data-action-start]"),
+  stopBtn: document.querySelector("button[data-action-stop]"),
+  clockface: document.querySelector(".js-clockface"),
 };
 
 class Timer {
@@ -52,7 +52,7 @@ class Timer {
    */
   getTimeComponents(time) {
     const hours = this.pad(
-      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     );
     const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
     const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
@@ -64,7 +64,7 @@ class Timer {
    * Принимает число, приводит к строке и добавляет в начало 0 если число меньше 2-х знаков
    */
   pad(value) {
-    return String(value).padStart(2, '0');
+    return String(value).padStart(2, "0");
   }
 }
 
@@ -72,8 +72,8 @@ const timer = new Timer({
   onTick: updateClockface,
 });
 
-refs.startBtn.addEventListener('click', timer.start.bind(timer));
-refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
+refs.startBtn.addEventListener("click", timer.start.bind(timer));
+refs.stopBtn.addEventListener("click", timer.stop.bind(timer));
 
 /*
  * - Принимает время в миллисекундах
