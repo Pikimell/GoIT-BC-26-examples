@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "parcel-plugin-handlebars-precompile": "^1.0.2"
   },
   "dependencies": {
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.21"
   }
 }

@@ -1,5 +1,35 @@
 import data from "./05-users-data";
+import userCards from "../templates/userCards.hbs";
+import postItems from "../templates/postItem.hbs";
+import albumItems from "../templates/albumItems.hbs";
+import commentItems from "../templates/commentItems.hbs";
+import imgItem from "../templates/imgItem.hbs";
 let { users, albums, photos, posts, comments } = data;
+localStorage.setItem("ALBUMS", JSON.stringify(albums));
+/* 
+let myUser = {
+  name: "awdawd",
+  age: 123,
+  email: "awdawd",
+  isAdmin: true,
+  arrayUsers: [1, 2, 3, 4],
+  info: {
+    adress: "123123",
+  },
+};
+
+let myStr = JSON.stringify(myUser);
+let result;
+try {
+  let user = JSON.parse(myStr);
+  if (!user.email.includes("@")) throw new Error("Error Email");
+} catch (error) {
+  console.log(error);
+} 
+*/
+
+/* saveToLS(users);
+users = loadFromLS("users"); */
 
 //Посилання на необхідні елементи
 const refs = {
@@ -13,6 +43,29 @@ const refs = {
   modalForm2: document.querySelector(".js-modal-2"),
   commentsListEl: document.querySelector(".js-list-post-comment"),
 };
+
+[
+  {
+    id: 1,
+    title: "",
+    index: 0,
+  },
+  {
+    id: 1,
+    title: "",
+    index: 1,
+  },
+  {
+    id: 1,
+    title: "",
+    index: 2,
+  },
+  {
+    id: 1,
+    title: "",
+    index: 2,
+  },
+];
 
 // Завантажую(Відображаю на сторінці) список користувачів
 showFilteredUsers(users);
@@ -31,15 +84,8 @@ function onInputChange(event) {
 
 //Фукнція відображенння отриманого массиву коритсувачів
 function showFilteredUsers(users) {
-  let result = users
-    .map((use) => {
-      return `
-      <li class="user-card" data-idUser="${use.id}">
-       ${use.name}
-      </li>
-      `;
-    })
-    .join(""); // Перетворення массиву на розмітку ХТМЛ
+  let myStr = userCards(users);
+  let result = myStr; // Перетворення массиву на розмітку ХТМЛ
 
   refs.userList.innerHTML = result;
   refs.btnOpenModal = document.querySelector("#open-modal");
@@ -64,23 +110,15 @@ function onUserClick(event) {
 // Функція відображення Альбомів переданого юзера
 function updateListAlbums(idUser) {
   //Фільтруємо массив постів, залишаючи лише необхідні
-  const filteredPosts = albums.filter(({ userId }) => {
+  const filteredAlbum = albums.filter(({ userId }) => {
     return userId === Number(idUser);
   });
 
-  // Генеруємо массив з розміткою альбомів (елемент)
-  const htmlPosts = filteredPosts.map(({ id, title }) => {
-    return `
-        <li class="box post-item" data-id="${id}">
-            <b>${title}</b>
-        </li>`;
-  });
-
-  // Отримуємо розмітку у вигляді цільного рядка
-  let result = htmlPosts.join("");
-
   // Відображаємо цю розмітку на сторінці
-  refs.postList.innerHTML = result;
+  let obj = {
+    filteredAlbum: filteredAlbum,
+  };
+  refs.postList.innerHTML = albumItems(obj);
 }
 
 // Функція відображення Постів переданого юзера (Все як і в верхній функції)
@@ -88,16 +126,8 @@ function updateListPosts(idUser) {
   const filteredPosts = posts.filter(({ userId }) => {
     return userId === Number(idUser);
   });
-  const htmlPosts = filteredPosts.map(({ title, body, id }) => {
-    return `
-        <li class="box post-item" data-id='${id}'>
-            <b>${title}</b>
-            <p>${body}</p>
-        </li>`;
-  });
 
-  let result = htmlPosts.join("");
-  refs.postList.innerHTML = result;
+  refs.postList.innerHTML = postItems(filteredPosts);
 }
 
 // Додавання прослуховувача події на список постів (щоб відкривати модалку)
@@ -137,16 +167,8 @@ function showComments(postId) {
   let filteredComments = comments.filter((comment) => {
     return comment.postId == postId;
   });
-  refs.commentsListEl.innerHTML = filteredComments
-    .map(({ body, email }) => {
-      return `
-    <li class="comment-item">
-            <i>${email}</i>
-            <p>${body}</p>
-          </li>
-    `;
-    })
-    .join("");
+
+  refs.commentsListEl.innerHTML = commentItems(filteredComments);
 }
 
 // Фукнція відображення альбому в модальному вікні
@@ -155,11 +177,7 @@ function loadAlbumDataToModal(title, albumId) {
     return photo.albumId == Number(albumId);
   });
   refs.modalForm2.children[0].textContent = title;
-  refs.modalForm2.children[1].innerHTML = filteredListPhoto
-    .map((elem) => {
-      return ` <img class='list-photo-item lazyload' src="${elem.thumbnailUrl}" data-src="${elem.url}">`;
-    })
-    .join("");
+  refs.modalForm2.children[1].innerHTML = imgItem(filteredListPhoto);
 }
 
 // Прослуховувач подій на кнопці для створення нового юзера (Відкриває модальне вікно реєстрації)
@@ -182,7 +200,6 @@ refs.commentsListEl.addEventListener("mouseover", onCommentsListMouseOver);
 refs.commentsListEl.addEventListener("mouseout", onCommentsListMouseOut);
 
 function onCommentsListMouseOver(event) {
-  console.log(refs.postList.style.height);
   refs.postList.style.height = "100px";
   event.currentTarget.style.height = "300px";
 }
