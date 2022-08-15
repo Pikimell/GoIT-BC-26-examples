@@ -1,4 +1,6 @@
-// users, posts, comments, albums, photos
+import data from "./05-users-data";
+let { users, albums, photos, posts, comments } = data;
+
 //Посилання на необхідні елементи
 const refs = {
   inputUserFilter: document.querySelector("#user-filter"),
@@ -44,7 +46,7 @@ function showFilteredUsers(users) {
 }
 
 // Прослуховувач подій клік на Списку користувачів
-refs.userList.addEventListener("click", onUserClick);
+refs.userList.addEventListener("click", onUserClick, 500);
 //Колбек для прослуховувача
 function onUserClick(event) {
   if (event.target.nodeName === "LI") {

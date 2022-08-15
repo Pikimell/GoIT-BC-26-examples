@@ -1,19 +1,27 @@
 {
-  "name": " ",
+  "name": "MyName",
   "version": "1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pikimell/GoIT-examples.git"
+    "url": "git+https://github.com/Pikimell/test-2.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pikimell/GoIT-examples/issues"
+    "url": "https://github.com/Pikimell/test-2/issues"
   },
-  "homepage": "https://github.com/Pikimell/GoIT-examples#readme"
+  "homepage": "https://github.com/Pikimell/test-2",
+  "devDependencies": {
+    "parcel": "^2.7.0",
+    "parcel-plugin-handlebars-precompile": "^1.0.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
