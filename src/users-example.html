@@ -8,10 +8,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div class="box advertising blue js-advertising">
+    <h5>PLS BUY COFFE</h5>
+    <input class="js-close-modal" type="button" value="Click Me"/>
+    <input id="btnHideModal" type="button" disabled value="Close"/>
+  </div>
+
   <input type="checkbox" id="autoSaveBtn">
-    <ul id="coffeElements"></ul>
+  <div class="box">
+    <ul id="coffeElements" class="list-coffe">
+    </ul>
+    <div class="box js-form-box">
+      <label>Title:<br /><input type="text" value="" data-form='Title'/></label><br />
+      <label>Desk:<br /><textarea style="resize: none;" data-form='Desk'></textarea></label><br />
+      <label>ImageUrl:<br /><input type="text" value="" data-form="ImageUrl"/></label><br />
+      <input type="button" value="Create Element" id="createElemBtn"/>
+      <input type="button" value="Відновити данні" disabled id="restoreElemBtn"/>
+    </div>
+  </div>
   
   
+
   <script type="module" src="./scripts/script.js"></script>
 </body>
 </html>

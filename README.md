@@ -38,3 +38,16 @@ fetch(baseURL)
 1. відображення дати у кожного елементу
 1. сортування за датою
 1. якщо перейшли по рекламі то видалити таймер
+
+---
+
+```html
+<ul id="coffeElements" class="list-coffe"></ul>
+
+<div class="box">
+  <label>Title:<br /><input type="text" value="" /></label><br />
+  <label>Desk:<br /><textarea style="resize: none;"></textarea></label><br />
+  <label>ImageUrl:<br /><input type="text" value="" /></label><br />
+  <input type="button" value="Create Element" />
+</div>
+```
