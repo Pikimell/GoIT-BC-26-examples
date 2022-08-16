@@ -1,3 +1,6 @@
+- [uniqid](https://www.npmjs.com/package/uniqid)
+- [date-fns](https://www.npmjs.com/package/date-fns)
+
 1. Створення Юзера
 1. Унікальна Функція фільтрації масиву
 1. Унікальна функція завантаження данних з ЛС
