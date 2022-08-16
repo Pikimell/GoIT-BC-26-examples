@@ -1,4 +1,4 @@
-import dataArray from "../05-users-data.js";
+import dataArray from "../users-data.js";
 let { users, photos, posts, albums, comments } = dataArray;
 
 function loadAlbumDataToModal(title, albumId, refs) {

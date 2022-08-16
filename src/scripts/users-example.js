@@ -1,6 +1,6 @@
 // users, posts, comments, albums, photos
 //Посилання на необхідні елементи
-import dataArray from "./05-users-data.js";
+import dataArray from "./users-data.js";
 import helpers from "./modules/helpers.js";
 import callbacks from "./modules/callbacks.js";
 
