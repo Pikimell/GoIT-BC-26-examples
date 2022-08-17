@@ -211,3 +211,9 @@ setTimeout(() => {
 
 console.log(10);
 ```
+
+---
+
+<br /><br /><br /><br />
+
+# [TASKS 3](https://www.google.com/amp/s/habr.com/ru/amp/post/582914/)
