@@ -1,53 +1,213 @@
-# EXAMPLE
+# [TASKS](https://habr.com/ru/post/681882/)
 
-## Modules
-
-- [uniqid](https://www.npmjs.com/package/uniqid)
-- [date-fns](https://www.npmjs.com/package/date-fns)
-
----
-
-## Fake API
-
-- [BASE URL API ](https://sampleapis.com/)
-- [Api url-1 sampleapis](https://api.sampleapis.com/coffee/hot)
-- [Api url-2 sampleapis](https://api.sampleapis.com/coffee/iced)
+## Task 1
 
 ```js
-//Example use API
-const baseURL = "https://api.sampleapis.com/coffee/iced";
-fetch(baseURL)
-  .then((resp) => resp.json())
-  .then((data) => console.log(data));
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+console.log("Конец скрипта");
 ```
 
 ---
 
-## TASKS
+## Task 2
 
-1. завантажити масив з даними
-1. зберігати в ЛС
-1. завантажувати з ЛС
-1. створити функціонал для створення та видалення нових екземплярів
-1. Автозбереження
-1. створити рекламу кофе
-1. зберігати введений текст(при неочікуваному перезавантаженні сторінки відновити втрачені данні)
-1. зробити кнопку для відновлення цих данних (повинна бути неактивною, якщо данних для відновлення не має)
-1. Значення чекбоксу Автозбереження зберігається в ЛС
-1. Через 5 секунд як зайшли на сайт, запитуємо, чи не бажає продовжити з місця де зупинились
-1. відображення дати у кожного елементу
-1. сортування за датою
-1. якщо перейшли по рекламі то видалити таймер
+```js
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+```
 
 ---
 
-```html
-<ul id="coffeElements" class="list-coffe"></ul>
+## Task 3
 
-<div class="box">
-  <label>Title:<br /><input type="text" value="" /></label><br />
-  <label>Desk:<br /><textarea style="resize: none;"></textarea></label><br />
-  <label>ImageUrl:<br /><input type="text" value="" /></label><br />
-  <input type="button" value="Create Element" />
-</div>
+```js
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log);
+
+new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+```
+
+---
+
+## Task 4
+
+```js
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+setTimeout(() => console.log("in setTimeout1"), 1000);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+setTimeout(() => console.log("in setTimeout2"), 100);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout3"), 2000);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout4"), 1000);
+myPromise(5000).then((res) => console.log("in Promise "));
+```
+
+---
+
+<br /><br /><br /><br />
+
+# [TASKS 2](https://russianblogs.com/article/33321448227/)
+
+## Task 1
+
+```js
+setTimeout(() => {
+  console.log(1);
+}, 0);
+new Promise((resolve, reject) => {
+  console.log(2);
+  resolve(null);
+}).then((v) => {
+  console.log(3);
+});
+console.log(4);
+```
+
+---
+
+## Task 2
+
+```js
+setTimeout(function () {
+  console.log("s1");
+}, 0);
+setTimeout(function () {
+  console.log("s2");
+}, 1000);
+new Promise(function (resolve) {
+  console.log("p1");
+  resolve();
+  console.log("p2");
+}).then(function () {
+  console.log("p3");
+});
+console.log("w1");
+async function test1() {
+  console.log("a1");
+  await test2();
+  console.log("a2");
+}
+async function test2() {
+  console.log("a3");
+}
+test1();
+console.log("w2");
+```
+
+---
+
+## Task 3
+
+```js
+Promise.resolve(1)
+  .then((res) => {
+    console.log(res);
+    return 2;
+  })
+  .catch((err) => {
+    return 3;
+  })
+  .then((res) => {
+    console.log(res);
+  });
+```
+
+---
+
+## Task 4
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Начните");
+    resolve("success");
+  }, 5000);
+});
+
+const start = Date.now();
+console.log("w1");
+
+promise.then((res) => {
+  console.log(res, Date.now() - start);
+});
+
+promise.then((res) => {
+  console.log(res, Date.now() - start);
+});
+```
+
+---
+
+## Task 5
+
+```js
+console.log(1);
+
+setTimeout(() => {
+  console.log(2);
+  Promise.resolve().then(() => {
+    console.log(3);
+  });
+});
+
+new Promise((resolve, reject) => {
+  console.log(4);
+  resolve(5);
+}).then((data) => {
+  console.log(data);
+
+  Promise.resolve()
+    .then(() => {
+      console.log(6);
+    })
+    .then(() => {
+      console.log(7);
+
+      setTimeout(() => {
+        console.log(8);
+      }, 0);
+    });
+});
+
+setTimeout(() => {
+  console.log(9);
+});
+
+console.log(10);
 ```

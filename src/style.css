@@ -1,12 +1,9 @@
-.lazy-load p{
-    max-width: 500px;
-}
-
 img{
     border-radius: 10px;
     width: 500px;
     height: 500px;
 }
+
 .box{
   display: flex;
   flex-direction: column;
@@ -28,23 +25,7 @@ img{
 
 }
 
-.advertising{
-  position: absolute;
-  width: 10vw;
-  height: 10vh;
-  left: 45vw;
-  top:-20vh;
-  margin: 0;
-  transition: all 2s;
-}
 
-.advertising *{
-  margin: 5px;
-}
-
-.advertising.show{
-  top:2vh;
-}
 
 
 .list-item{
@@ -62,24 +43,6 @@ img{
   align-items: center;
   justify-content: start;
   cursor: pointer;
-}
-
-.list-coffe{
-display: flex;
-flex-direction: column;
-height: 150px;
-width: 25vw;
-align-items: center;
-justify-content: start;
-padding: 15px;
-border: 1px solid grey;
-overflow-y: scroll;
-overflow-x: hidden;
-}
-
-.coffe-info{
-  width: 70vw;
-  height: 86vh;
 }
 
 body.show-modal .backdrop{
@@ -174,7 +137,7 @@ flex-direction: row;
   top:10px;
 }
 
-body{
+body.body{
   width: 98vw;
   height: 96vh;
   display: flex;
