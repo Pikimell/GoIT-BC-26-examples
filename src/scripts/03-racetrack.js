@@ -1,76 +1,60 @@
-const horses = [
-  "Secretariat",
-  "Eclipse",
-  "West Australian",
-  "Flying Fox",
-  "Seabiscuit",
-];
-
-let raceCounter = 0;
 const refs = {
   startBtn: document.querySelector(".js-start-race"),
   winnerField: document.querySelector(".js-winner"),
   progressField: document.querySelector(".js-progress"),
   tableBody: document.querySelector(".js-results-table > tbody"),
+  spiner: document.querySelector(".js-spiner"),
 };
+refs.startBtn.addEventListener("click", loadDataFromServer);
 
-//refs.startBtn.addEventListener("click", onStart);
+let promis = fetch("https://pokeapi.co/api/v2/pokemon/");
+let promises = [];
 
-/*
- * Promise.race([]) для ожидания первого выполнившегося промиса
- */
+let globalUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-let p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(1);
-  }, 5000);
-});
-let p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(2);
-  }, 3000);
-});
-let p3 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(3);
-  }, 7000);
-});
-let p4 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(4);
-  }, 1000);
-});
-let p5 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject(5);
-  }, 500);
-});
+function loadDataFromServer() {
+  let promise = new Promise((resolve, reject) => {
+    console.log("Start spinner");
+    refs.spiner.classList.add("show");
+    setTimeout(() => {
+      fetch(globalUrl).then((value) => {
+        resolve(value.json());
+      });
+    }, 3000);
+  });
 
-// let err = new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     reject(5);
-//   }, 2000);
-// });
+  promise
+    .then((val) => {
+      console.log("Stop spinner");
+      globalUrl = val.next;
+      showData(val.results);
+      refs.spiner.classList.remove("show");
+    })
+    .catch((err) => {
+      console.log("Stop spinner");
+    });
+}
 
-//Promise.race([err, p5]).then((value) => console.log(value));
+function showData(array) {
+  let result = array
+    .map((obj) => {
+      return `<li>${obj.name}</li>`;
+    })
+    .join("");
 
-/*
- * Promise.all([]) для ожидания всех промисов
- */
+  listItems.innerHTML = result;
+}
 
-// Promise.all([p1, p2, p3, p4, p5])
-//   .then((value) => console.log(value))
-//   .catch((err) => console.log("Err", err));
-
-/* 
-  Promise.any(iterable);  Как только один из промисов (Promise) выполнится успешно (fullfill), метод возвратит единственный объект Promise со значением выполненного промиса. Если ни один из промисов не завершится успешно (если все промисы завершатся с ошибкой, т.е. rejected), тогда возвращённый объект Promise будет отклонён (rejected) с одним из значений:
-
- */
-
-// Promise.any([p1, p2, p3, p4, p5]).then((value) => console.log(value));
-
-/* 
-Метод Promise.allSettled() возвращает промис, который исполняется когда все полученные промисы завершены (исполнены или отклонены), содержащий массив результатов исполнения полученных промисов.
-*/
-
-// Promise.allSettled([p1, p2, p3, p4, p5]).then((value) => console.log(value));
+// function isServerOk(url) {
+//   return new Promise((resolve, reject) => {
+//     fetch(url)
+//       .then((value) => {
+//         if (value.status == 200) {
+//           resolve(true);
+//         } else {
+//           resolve(false);
+//         }
+//       })
+//       .catch((err) => console.log(err));
+//   });
+// }
