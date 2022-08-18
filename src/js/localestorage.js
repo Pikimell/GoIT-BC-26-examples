@@ -1,13 +1,18 @@
+// Створюємо посилання на необхідні елементи
 const userList = document.querySelector("#user-list");
 const userInput = document.querySelector("#user-name");
-let users = [];
+let users = []; // Массив у якому будуть зберігатись юзери
 
+// Функція створення нового користувача
 function addUser() {
+  // Перевіряємо щоб поле користувача не було порожнім
   if (userInput.value !== "") {
+    // Створюємо елемент юзера
     let liElem = document.createElement("li");
     liElem.textContent = userInput.value;
+    // додаємо на сторінку елемент створенного Юзера.
     userList.append(liElem);
-    users.push(userInput.value);
+    users.push(userInput.value); 
     userInput.value = "";
     userInput.style.border = "1px solid black";
   } else {
