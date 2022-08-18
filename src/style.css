@@ -170,6 +170,11 @@ body.body{
   box-sizing: border-box;
   padding: 50px;
 }
+
+#listItems{
+  overflow-y: scroll;
+  max-height: 300px;
+}
  
   .form {
     background-color: #15172b;
