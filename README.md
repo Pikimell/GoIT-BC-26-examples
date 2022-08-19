@@ -7,7 +7,6 @@
 - Допмат (видео):
   - [The World Wide Web](https://youtu.be/guvsH5OFizE?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo)
   - [How The Internet Works](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfMRZm5DDxco3UdsFegvuB7)
-  - [Client-Server](https://habr.com/ru/post/495698/)
 - Допмат:
   - [Client-Server](https://habr.com/ru/post/495698/)
   - [Введение в REST API — RESTful веб-сервисы](https://habr.com/ru/post/483202/)
@@ -23,9 +22,10 @@
   - Заголовки
   - MIME-типы
   - [Параметры запроса](https://pixabay.com/api/docs/)
+  - [Pixabay API](https://pixabay.com/api/docs/#api_search_images)
 - Документация REST API
 - Аутентификация
-  - [https://newsapi.org/](https://newsapi.org/)
+  - [https://newsapi.org/](https://newsapi.org/) key-c8747511a2c34730a83caaff4f3693e7
   - [https://weatherstack.com/](https://weatherstack.com/)
   - [https://pixabay.com/api/docs/](https://pixabay.com/api/docs/)
 - Библиотеки-обёртки
