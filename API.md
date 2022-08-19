@@ -15,6 +15,7 @@
 - https://rapidapi.com/kplionelabiathar/api/songs-lyrics-generator/
 - https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news/
 - https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news/
+- https://rickandmortyapi.com/api/character/4
 
 ---
 

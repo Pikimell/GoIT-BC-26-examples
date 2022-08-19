@@ -1,6 +1,10 @@
 import "../css/common.css";
 import { serchHero, showHero } from "./modules/heroesAPI";
 import { refs } from "./modules/refs.js";
+import { getPlayer } from "./modules/nbaAPI";
+import { getQuotes, showQuotes } from "./modules/quotesAPI";
+import { getDataIpGeo } from "./modules/geoLocationApi";
+import { getDataGeo } from "./modules/geolocationApiv2";
 
 // =======================================================
 refs.form.addEventListener("submit", onSerachHeroClick);
@@ -16,13 +20,29 @@ function onSerachHeroClick(event) {
 // =======================================================
 refs.form1.addEventListener("submit", (event) => {
   event.preventDefault();
-  const options = {
-    headers: {
-      "X-RapidAPI-Key": "fd83113197msh93c2b2d5cc00a3ep1c503bjsn3e85bf01dd76",
-      "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
-    },
-  };
-  fetch("https://free-nba.p.rapidapi.com/players", options).then((response) =>
-    console.log(response.json())
-  );
+  let ip = refs.form1.elements.query.value;
+  getDataIpGeo(ip).then((value) => console.log(value));
 });
+// =======================================================
+refs.form2.addEventListener("submit", onBtnClickSubmit);
+
+function onBtnClickSubmit(e) {
+  e.preventDefault();
+  getQuotes().then((quotes) => {
+    showQuotes(quotes);
+  });
+}
+// =======================================================
+
+refs.form3.addEventListener("submit", onGeoLocotaionClick);
+
+function onGeoLocotaionClick(event) {
+  event.preventDefault();
+  let lat = refs.form3.elements.lat.value;
+  let lng = refs.form3.elements.lng.value;
+
+  console.log(lat, lng);
+  getDataGeo(lat, lng).then((value) => console.log(value.Results[0]));
+}
+
+// =======================================================
