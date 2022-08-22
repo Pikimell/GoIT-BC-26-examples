@@ -148,3 +148,8 @@ img {
 .button > .spinner.is-hidden {
   display: none;
 }
+
+.card-job{
+  padding: 20px;
+  width: 30vw;
+}
