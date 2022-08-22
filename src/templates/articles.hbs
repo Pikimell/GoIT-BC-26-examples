@@ -1,12 +1,13 @@
 {{#each this}}
-  <li>
-    <a href="{{url}}" target="_blank" rel="noopener noreferrer">
-      <article>
-        <img src="{{urlToImage}}" alt="" width="480">
-        <h2>{{title}}</h2>
-        <p>Posted by: {{author}}</p>
-        <p>{{description}}</p>
-      </article>
-    </a>
-  </li>
+    <div class="card news-card js-new-card">
+    <div class='news-image'>
+        <img src="{{urlToImage}}" alt="">
+    </div>
+    <h2 class="card-title">{{title}}</h2>
+    <p class="card-desc">{{description}}</p>
+    <div class="card-footer">
+        <span>{{author}}</span>
+        <span>{{publishedAt}}</span>
+    </div>
+</div>
 {{/each}}

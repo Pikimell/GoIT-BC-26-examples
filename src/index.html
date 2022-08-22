@@ -14,7 +14,19 @@
 </head>
 <body>
 
-    <div>
+    <div class="header">
+        <ul class="pagination js-pagination">
+          <li class="active">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>1001</li>
+        </ul>
         <form class="form-inline search-form js-search-form">
             <div class="form-group">
               <input type="text" class="form-control" name="query" />
@@ -29,7 +41,8 @@
     <div class="news-list js-articl-list">
        
     </div>
-    <button
+    
+    <button disabled
       type="button"
       class="btn btn-primary button js-btn-load"
       data-action="load-more"

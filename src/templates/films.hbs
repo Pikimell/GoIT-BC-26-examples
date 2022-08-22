@@ -1,0 +1,19 @@
+{{#each this}}
+    <div class="card news-card js-new-card" data-id="{{id}}">
+    <div class='news-image'>
+        <img src="https://image.tmdb.org/t/p/w500/{{backdrop_path}}" alt="">
+    </div>
+    <h2 class="card-title">
+        {{#if original_name}}
+            {{original_name}}
+        {{else}}
+            {{original_title}}
+        {{/if}}
+    </h2>
+    <p class="card-desc">{{overview}}</p>
+    <div class="card-footer">
+        <span>{{origin_country}}</span>
+        <span>{{vote_average}}</span>
+    </div>
+</div>
+{{/each}}

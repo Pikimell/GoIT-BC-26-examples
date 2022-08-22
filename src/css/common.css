@@ -12,7 +12,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
 }
@@ -152,4 +152,33 @@ img {
 .card-job{
   padding: 20px;
   width: 30vw;
+}
+
+.pagination{
+  display: flex;
+  padding: 10px;
+  border: 1px solid tomato;
+  border-radius: 10px;
+}
+.pagination li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  border: 1px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination li.active{
+  background-color: #bef1ff;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
