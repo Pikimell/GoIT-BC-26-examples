@@ -1,50 +1,55 @@
-import "../css/common.css";
-import { refs } from "./modules/refs";
-import filmCardTemplate from "../templates/films";
-import FilmApi from "./modules/filmsAPI";
+// import "./modules/r - get";
+// import "./modules/c - post";
+// import "./modules/u - put";
+// import "./modules/u - patch";
+// import "./modules/d - delete";
 
-const filmApi = new FilmApi();
+let form = document.querySelector(".js-search-form");
 
-refs.loadMoreBtn.addEventListener("click", onLoadClick);
-refs.form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  filmApi.setPage(1);
-  filmApi.getTopRated().then((value) => {
-    refs.loadMoreBtn.disabled = false;
-    refs.articleList.innerHTML = "";
-    renderMarkup(value.results);
-  });
-});
+form.addEventListener("submit", onFormSubmit);
 
-function renderMarkup(result) {
-  refs.articleList.innerHTML += filmCardTemplate(result);
-}
+/* function onFormSubmit(event) {
+  event.preventDefault();
+  let file = form.elements.query.files[0];
 
-function onLoadClick() {
-  refs.loadMoreBtn.disabled = true;
-  filmApi.getTopRated().then((value) => {
-    renderMarkup(value.results);
-  });
-  setTimeout(() => {
-    refs.loadMoreBtn.disabled = false;
-  }, 1000);
-}
+  let myData = new FormData();
+  myData.append("file1", file);
 
-refs.paginationList.addEventListener("click", selectPage);
+  let config = {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: myData,
+  };
+  fetch("localhost:3000/file/addFile", config);
+} */
 
-function selectPage(event) {
-  if (event.target.nodeName !== "UL") {
-    let numberPage = event.target.textContent;
-    refs.paginationList.querySelector(".active").classList.remove("active");
+/* function onFormSubmit(event) {
+  event.preventDefault();
+  let file = form.elements.query.files[0];
+  const blob = new Blob(["Hello world!"], { type: "text/plain" });
+  saveFileBtn.href = URL.createObjectURL(file);
+  console.log(saveFileBtn.href);
+  saveFileBtn.download = "text.txt";
+} */
 
-    filmApi.setPage(numberPage);
-    filmApi.getPopular().then((value) => {
-      refs.articleList.innerHTML = "";
-      renderMarkup(value.results);
-    });
+/* function onFormSubmit(event) {
+  event.preventDefault();
 
-    let liObj = event.target;
-    if (liObj.nodeName !== "LI") liObj = event.target.parentNode.parentNode;
-    liObj.classList.add("active");
-  }
-}
+  let csv = [
+    ["Col1", "Col2", "Col3"], // Col1,Col2,Col3
+    [1, 1, 1],
+    [2, 1, 1],
+    [3, 1, 1],
+    [4, 1, 1],
+    [5, 1, 1],
+  ];
+
+  let mapCsv = csv.map((r) => r.join(","));
+
+  const blob = new Blob([mapCsv], { type: "text/csv" });
+  saveFileBtn.href = URL.createObjectURL(blob);
+  console.log(saveFileBtn.href);
+  saveFileBtn.download = "text.csv";
+} */
