@@ -1,0 +1,46 @@
+.room-image{
+    position: relative;
+    width: fit-content;
+    height: 50%;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .room-card{
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    list-style: none;
+  }
+  
+  .room-title{
+    margin: 20px 5px ;
+    color: rgb(64, 64, 64);
+    font-size: 30px;
+    text-shadow: #2a2a2a;
+    text-shadow: 2px 0 2px #d0d0d0, 
+                  0 2px 2px #d0d0d0, 
+                  -2px 0 2px #d0d0d0, 
+                  0 -2px 2px #d0d0d0;
+  }
+  
+  .room-desc{
+    height: 190px;
+    overflow: auto;
+    margin: 10px;
+  }
+  
+  .room-desc::-webkit-scrollbar {
+    width: 7px;
+    background-color: #f9f9fd;
+  }
+  .room-desc::-webkit-scrollbar-thumb {
+    background-color: #223c50;
+  }
+  
+  .room-footer{
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
