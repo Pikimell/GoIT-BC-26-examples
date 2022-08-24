@@ -1,10 +1,10 @@
-import axios from "axios";
-import { faker } from "@faker-js/faker";
+import axios from 'axios';
+import { faker } from '@faker-js/faker';
 faker.seed(0);
-faker.locale = "ru";
-const baseURL = "http://localhost:4040";
+faker.locale = 'ru';
+const baseURL = 'http://localhost:4040';
 
-const instance = axios.create({
+const axiosUp = axios.create({
   baseURL: `${baseURL}/books`,
 });
 
@@ -14,31 +14,70 @@ export class BooksAPI {
     this._limit = limit;
   }
 
-  getBooks() {
-    return instance.get("").then((response) => response.data);
+  async getBooks() {
+    try {
+      const response = await axiosUp.get('');
+      return response.data;
+    } catch {
+      return [];
+    }
   }
 
-  getLimitBooks() {
+  async getLimitBooks() {
     this._page++;
-    return instance
-      .get(`?_page=${this._page}&_limit=${this._limit}`)
-      .then((response) => response.data);
+    try {
+      const response = await axiosUp.get(
+        `?_page=${this._page}&_limit=${this._limit}`,
+      );
+      if (response.status !== 200) {
+        const myError = new Error('no response from server');
+        throw myError;
+      }
+      return response.data;
+    } catch (error) {
+      console.dir(error);
+    }
   }
 
-  createBook(book) {
-    return instance.post("", book).then((response) => response.data);
+  async createBook(book) {
+    try {
+      const response = await axiosUp.post('', book);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }
-  replaceBook(book, id) {
-    return instance.put(`/${id}`, book).then((response) => response.data);
+
+  async replaceBook(book, id) {
+    try {
+      const response = await axiosUp.put(`/${id}`, book);
+      return response.data;
+    } catch {
+      console.log('Id is undefined');
+      return [];
+    }
   }
-  updateBook(book, id) {
-    return instance.patch(`/${id}`, book).then((response) => response.data);
+
+  async updateBook(book, id) {
+    try {
+      const response = await axiosUp.patch(`/${id}`, book);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-  deleteBook(id) {
-    return instance
-      .delete(`/${id}`)
-      .then((response) => response)
-      .catch((error) => console.log(error));
+
+  async deleteBook(id) {
+    try {
+      const response = await axiosUp.delete(`/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return {
+        title: 'Default',
+      };
+    }
   }
 
   static getRandomBook() {

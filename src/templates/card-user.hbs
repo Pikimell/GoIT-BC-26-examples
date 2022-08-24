@@ -1,27 +1,29 @@
+{{#each this}}
 <li class="card user-card">
-  <img src="https://source.unsplash.com/250x250/?random=1&avatar,man,boy,girl,family" alt="" class="user-avatar">
+  <img src="https://source.unsplash.com/250x250/?random={{id}}&avatar,man,boy,girl,family" alt="" class="user-avatar">
   <h3 class="user-title">
-    Mercedes Leuschke DVM
+    {{name}}
   </h3>
   <hr>
   <ul>
-    <li>Email: .........</li>
-    <li>Phone: .........</li>
+    <li>Email: {{email}}</li>
+    <li>Phone: {{phone}}</li>
   </ul>
   <hr>
   <div class="user-desc">
     Books:
     <ul>
-      <li>Book1</li>
-      <li>Book1</li>
-      <li>Book1</li>
+      {{#each readedBooks}}
+        <li>{{title}}</li>
+      {{/each}}
     </ul>
     <hr>
     Rooms:
     <ul>
-      <li>Room1</li>
-      <li>Room1</li>
-      <li>Room1</li>
+      {{#each room}}
+        <li>{{name}}</li>
+      {{/each}}
     </ul>
   </div>
 </li>
+{{/each}}

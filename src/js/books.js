@@ -1,7 +1,8 @@
 import '../css/common';
 import '../css/book';
 import { BooksAPI } from './modules/booksAPI';
-import cardBook from '../templates/card-books';
+import cardBooks from '../templates/card-books';
+import cardBook from '../templates/card-book';
 function callback() {
   console.log('CALLBACK');
 }
@@ -23,7 +24,7 @@ refs.resetForm.addEventListener('submit', onResetForm);
 refs.updateForm.addEventListener('submit', onUpdateForm);
 refs.deleteForm.addEventListener('submit', onDeleteForm);
 
-function onCreateForm(event) {
+async function onCreateForm(event) {
   event.preventDefault();
 
   let formData = new FormData(refs.createForm);
@@ -33,11 +34,12 @@ function onCreateForm(event) {
     book[key.replace('book', '').toLowerCase()] = value;
   });
 
-  booksApi.createBook(book);
+  const createdBook = await booksApi.createBook(book);
+  refs.bookList.insertAdjacentHTML('beforeend', cardBook(createdBook));
   refs.createForm.reset();
 }
 
-function onResetForm(event) {
+async function onResetForm(event) {
   event.preventDefault();
 
   let formData = new FormData(refs.resetForm);
@@ -49,14 +51,14 @@ function onResetForm(event) {
   let id = book.id;
   delete book.id;
 
-  booksApi.replaceBook(book, id).then(() => {
-    booksApi.getBooks().then(renderBooks);
-  });
+  await booksApi.replaceBook(book, id);
+  const books = await booksApi.getBooks();
+  renderBooks(books);
 
   refs.resetForm.reset();
 }
 
-function onUpdateForm(event) {
+async function onUpdateForm(event) {
   event.preventDefault();
   let book = {};
   let formData = new FormData(refs.updateForm);
@@ -67,23 +69,29 @@ function onUpdateForm(event) {
   let id = book.id;
   delete book.id;
 
-  booksApi.updateBook(book, id).then(() => {
-    booksApi.getBooks().then(renderBooks);
-  });
+  await booksApi.updateBook(book, id);
+  const books = await booksApi.getBooks();
+  renderBooks(books);
+
+  refs.updateForm.reset();
 }
 
-function onDeleteForm(event) {
+async function onDeleteForm(event) {
   event.preventDefault();
   let id = refs.deleteForm.elements.bookId.value;
-  booksApi.deleteBook(id).then(() => {
-    booksApi.getBooks().then(renderBooks);
-  });
+  const delateBook = await booksApi.deleteBook(id);
+  const books = await booksApi.getBooks();
+  renderBooks(books);
+  console.log(`Book ${delateBook.title} deleted!`);
 }
 
-function onBtnLoadClick(event) {
-  booksApi.getBooks().then(books => renderBooks(books));
+async function onBtnLoadClick(event) {
+  const books = await booksApi.getBooks();
+  renderBooks(books);
 }
 
 function renderBooks(books) {
-  refs.bookList.innerHTML = cardBook(books);
+  refs.bookList.innerHTML = cardBooks(books);
 }
+
+booksApi.getLimitBooks();
