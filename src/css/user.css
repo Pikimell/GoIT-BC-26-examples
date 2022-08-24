@@ -1,0 +1,45 @@
+.user-avatar{
+  position: relative;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.user-card{
+  width: 300px;
+  height: 500px;
+  padding: 10px;
+  list-style: none;
+}
+
+.user-title{
+  margin: 10px 5px 0px 5px;
+  color: rgb(64, 64, 64);
+  font-size: 20px;
+  text-shadow: #2a2a2a;
+  text-shadow: 2px 0 2px #d0d0d0, 
+                0 2px 2px #d0d0d0, 
+                -2px 0 2px #d0d0d0, 
+                0 -2px 2px #d0d0d0;
+}
+
+.user-desc{
+  height: 190px;
+  overflow: auto;
+  margin: 10px;
+}
+
+.user-desc::-webkit-scrollbar {
+  width: 7px;
+  background-color: #f9f9fd;
+}
+.user-desc::-webkit-scrollbar-thumb {
+  background-color: #223c50;
+}
+
+.user-footer{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+  

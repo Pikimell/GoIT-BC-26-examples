@@ -14,7 +14,7 @@ body {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  height: 100vh;
+  overflow-y: auto;
 }
 
 img {
@@ -33,21 +33,22 @@ img {
   box-shadow: 0 0 20px 8px #d0d0d0;
 }
 
-.news-image{
-  width: 100%;
+.book-image{
+  position: relative;
+  width: fit-content;
   height: 50%;
   overflow: hidden;
   border-radius: 20px;
 }
 
-.news-card{
-  position: relative;
+.book-card{
   width: 500px;
   height: 600px;
   padding: 10px;
+  list-style: none;
 }
 
-.card-title{
+.book-title{
   margin: 20px 5px ;
   color: rgb(64, 64, 64);
   font-size: 30px;
@@ -58,21 +59,21 @@ img {
 				0 -2px 2px #d0d0d0;
 }
 
-.card-desc{
+.book-desc{
   height: 190px;
   overflow: auto;
   margin: 10px;
 }
 
-.card-desc::-webkit-scrollbar {
+.book-desc::-webkit-scrollbar {
   width: 7px;
   background-color: #f9f9fd;
 }
-.card-desc::-webkit-scrollbar-thumb {
+.book-desc::-webkit-scrollbar-thumb {
   background-color: #223c50;
 }
 
-.card-footer{
+.book-footer{
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -88,6 +89,7 @@ img {
   padding: 20px;
   align-items: center;
   justify-content: center;
+  max-height: 100vh;
 }
 
 .news-list::-webkit-scrollbar {

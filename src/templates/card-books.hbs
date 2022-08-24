@@ -1,7 +1,11 @@
 {{#each this}}
-    <li data-id="{{id}}" class="card articles">
-    - {{id}}
-    - {{title}}<br>
-    - {{author}}<br>
-    </li>
+<li class="card book-card js-new-card" data-id="{{id}}">
+    <img class='book-image' src="https://source.unsplash.com/400x200/?random={{id}}&book" alt="">
+    <h2 class="book-title">{{title}}</h2>
+    <p class="book-desc">{{desc}}</p>
+    <div class="book-footer">
+        <span>{{author}}</span>
+        <span>{{createdAt}}</span>
+    </div>
+</li>
 {{/each}}
