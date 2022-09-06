@@ -5,6 +5,7 @@ import { getPlayer } from "./modules/nbaAPI";
 import { getQuotes, showQuotes } from "./modules/quotesAPI";
 import { getDataIpGeo } from "./modules/geoLocationApi";
 import { getDataGeo } from "./modules/geolocationApiv2";
+import mapLinkTemplate from "../templates/mapLink";
 
 // =======================================================
 refs.form.addEventListener("submit", onSerachHeroClick);
@@ -42,7 +43,10 @@ function onGeoLocotaionClick(event) {
   let lng = refs.form3.elements.lng.value;
 
   console.log(lat, lng);
-  getDataGeo(lat, lng).then((value) => console.log(value.Results[0]));
+  getDataGeo(lat, lng).then((value) => {
+    console.log(value.Results[0]);
+    map_link.innerHTML = mapLinkTemplate(value.Results[0]);
+  });
 }
 
 // =======================================================
